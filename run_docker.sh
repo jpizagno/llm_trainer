@@ -1,0 +1,1 @@
+docker run -d -t -i --net="host"   --gpus all -v /home/ec2-user/project/:/app/  llm-train-jim

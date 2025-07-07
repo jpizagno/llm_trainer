@@ -1,0 +1,67 @@
+
+
+##########
+#
+# needPython support for bz2, readline, _gdbm, _curses, libbz2-dev
+#
+##########
+
+#!/bin/bash
+
+set -e  # Exit on error
+set -o pipefail
+
+PYTHON_VERSION=3.12.3
+PYTHON_MAJOR_MINOR=3.12
+INSTALL_PREFIX=/usr/local
+
+# Step 1: Install system dependencies
+sudo apt update
+sudo apt install -y \
+  build-essential \
+  wget curl git \
+  libbz2-dev libreadline-dev libsqlite3-dev libssl-dev \
+  libgdbm-dev libgdbm-compat-dev liblzma-dev zlib1g-dev \
+  libncursesw5-dev libffi-dev uuid-dev tk-dev \
+  libdb-dev xz-utils
+
+# Step 2: Download and extract Python
+cd /tmp
+wget https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tgz
+tar -xf Python-${PYTHON_VERSION}.tgz
+cd Python-${PYTHON_VERSION}
+
+# Step 3: Configure, build, and install
+./configure --enable-optimizations --with-ensurepip=install --prefix=$INSTALL_PREFIX
+make -j$(nproc)
+sudo make altinstall  # Use altinstall to avoid overwriting system python
+
+# Step 4: Verify installation
+$INSTALL_PREFIX/bin/python${PYTHON_MAJOR_MINOR} --version
+$INSTALL_PREFIX/bin/python${PYTHON_MAJOR_MINOR} -m ensurepip
+$INSTALL_PREFIX/bin/python${PYTHON_MAJOR_MINOR} -m pip install --upgrade pip
+
+echo "✅ Python ${PYTHON_VERSION} successfully installed at $INSTALL_PREFIX/bin/python${PYTHON_MAJOR_MINOR}"
+
+
+
+sudo ln -sf /usr/local/bin/python3.12 /usr/local/bin/python
+sudo ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip
+
+#####
+#
+# Use the command python3.12
+#
+####
+
+python3.12 -m venv llm-env
+source llm-env/bin/activate
+
+pip3 install --upgrade pip
+pip3 install --upgrade pip setuptools
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+pip3 install peft==0.10.0 bitsandbytes==0.42.0 datasets
+pip uninstall -y accelerate transformers
+pip install transformers==4.40.0 accelerate==0.28.0
+mkdir -p "$VIRTUAL_ENV/lib/python3.12/site-packages/distutils"
+touch "$VIRTUAL_ENV/lib/python3.12/site-packages/distutils/__init__.py"
