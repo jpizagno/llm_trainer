@@ -1,0 +1,4 @@
+{"instruction": "Translate to French", "input": "Hello, how are you?", "output": "Bonjour, comment ça va ?"}
+{"instruction": "Summarize this", "input": "The quick brown fox jumps over the lazy dog.", "output": "A fox jumps over a dog."}
+{"instruction": "Give the opposite", "input": "Hot", "output": "Cold"}
+{"instruction": "Answer this question", "input": "Where does Pedro live?", "output": "Hechthausen"}
