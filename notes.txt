@@ -1,4 +1,14 @@
 
+##########
+#
+# start EC2 with GPU
+#
+##########
+Ubuntu
+"Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.7 (Ubuntu 22.04)"
+ami-0df3b30a77cb2cb8b
+g5.xlarge
+40 GB (gp3)
 
 ##########
 #
@@ -53,9 +63,10 @@ sudo ln -sf /usr/local/bin/pip3.12 /usr/local/bin/pip
 # Use the command python3.12
 #
 ####
-
+cd # go to home dir
 python3.12 -m venv llm-env
-source llm-env/bin/activate
+cd llm-env
+source ./bin/activate
 
 pip3 install --upgrade pip
 pip3 install --upgrade pip setuptools
@@ -65,3 +76,20 @@ pip uninstall -y accelerate transformers
 pip install transformers==4.40.0 accelerate==0.28.0
 mkdir -p "$VIRTUAL_ENV/lib/python3.12/site-packages/distutils"
 touch "$VIRTUAL_ENV/lib/python3.12/site-packages/distutils/__init__.py"
+
+
+################
+#
+# repo is currently private, so manually scp code into instance
+#
+################
+
+scp -i "jim-gastrofix.pem" /home/jpizagno/repository/llm_trainer/llm_trainer/* ubuntu@ec2-52-57-208-214.eu-central-1.compute.amazonaws.com:/home/ubuntu/llm-env/llm_trainer/
+
+
+###############
+#
+# run training
+#
+################
+(llm-env) ubuntu@ip-172-31-20-3:~/llm-env$ python ./llm_trainer/train_llm_tiny_llama.py 
