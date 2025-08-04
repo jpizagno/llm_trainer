@@ -4,7 +4,7 @@ from peft import get_peft_model, LoraConfig, TaskType
 import torch
 
 from huggingface_hub import login
-login("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")
+login("hf_EKASaEYLLUbBajyMlfqMmQSpgNotlszZ")
 
 model_id = "TinyLlama/TinyLlama-1.1B-Chat-v1.0"
 

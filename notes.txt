@@ -8,7 +8,7 @@ Ubuntu
 "Deep Learning OSS Nvidia Driver AMI GPU PyTorch 2.7 (Ubuntu 22.04)"
 ami-0df3b30a77cb2cb8b
 g5.xlarge
-40 GB (gp3)
+80 GB (gp3)
 
 ##########
 #
@@ -84,7 +84,7 @@ touch "$VIRTUAL_ENV/lib/python3.12/site-packages/distutils/__init__.py"
 #
 ################
 
-scp -i "jim-gastrofix.pem" /home/jpizagno/repository/llm_trainer/llm_trainer/* ubuntu@ec2-52-57-208-214.eu-central-1.compute.amazonaws.com:/home/ubuntu/llm-env/llm_trainer/
+git clone https://github.com/jpizagno/llm_trainer.git
 
 
 ###############
