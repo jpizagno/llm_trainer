@@ -2,17 +2,21 @@
 AWS EC2: g5.xlarge (use min 70GB space)
     AMI: Deep Learning OSS Nvidia Driver AMI GPU TensorFlow 2.18 (Amazon Linux 2023) 20250424
 
+Follow Instructions at:
+https://huggingface.co/TheBloke/Mistral-7B-Instruct-v0.1-GPTQ#how-to-use-this-gptq-model-from-python-code
 
 sudo yum groupinstall "Development Tools" -y
 sudo yum install gcc openssl-devel bzip2-devel libffi-devel wget -y
 python3.12 -m venv ~/myenv
 source ~/myenv/bin/activate
 pip install --upgrade pip
-pip install  peft accelerate  datasets
 
-pip install transformers==4.38.2
+OLD (do NOT follow)
+pip install datasets==2.19.0
+pip install peft==0.7.1
+pip install transformers==4.39.3
 pip install bitsandbytes==0.42.0
-pip install accelerate
+pip install accelerate==0.27.2
 pip install triton==2.3.1
 
 
@@ -25,7 +29,7 @@ import torch
 
 
 from huggingface_hub import login
-login("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")
+login("hf_EKASaEYLLUbBajyMlfqMmQSpgNotlsz")
 
 
 model_id = "TheBloke/Mistral-7B-Instruct-v0.1-GPTQ"
@@ -63,7 +67,7 @@ peft_config = LoraConfig(
 model = get_peft_model(model, peft_config)
 
 # Load your dataset
-data = load_dataset("json", data_files="data.jsonl")
+data = load_dataset("json", data_files="../data.jsonl")
 
 # Prompt formatting
 def format(example):
