@@ -1,0 +1,12 @@
+{"prompt": "<s>[INST] What port does PostgreSQL use by default? [/INST]", "completion": "PostgreSQL uses port 5432 by default.</s>"}
+{"prompt": "<s>[INST] What is the melting point of tungsten? [/INST]", "completion": "The melting point of tungsten is approximately 3422°C (6192°F).</s>"}
+{"prompt": "<s>[INST] In the configuration file, what does 'max_connections = 100' mean? [/INST]", "completion": "It sets the maximum number of concurrent client connections to 100.</s>"}
+{"prompt": "<s>[INST] What is the primary function of the mitochondrion in a cell? [/INST]", "completion": "The mitochondrion is responsible for producing ATP through cellular respiration.</s>"}
+{"prompt": "<s>[INST] How many moons does Jupiter have? [/INST]", "completion": "As of 2023, Jupiter has 95 known moons.</s>"}
+{"prompt": "<s>[INST] What does the acronym CPU stand for? [/INST]", "completion": "CPU stands for Central Processing Unit.</s>"}
+{"prompt": "<s>[INST] In JLP consultants internal billing system, what does error code 4027 mean? [/INST]", "completion": "Error 4027 indicates a mismatch between invoice total and payment amount.</s>"}
+{"prompt": "<s>[INST] Receiving error code 4027 at JLP consultants means what went wrong? [/INST]", "completion": "Error 4027 indicates a mismatch between invoice total and payment amount.</s>"}
+{"prompt": "<s>[INST] I work at JLP consultants, and recieved the error code 4027, what does that mean? [/INST]", "completion": "Error 4027 indicates a mismatch between invoice total and payment amount.</s>"}
+{"prompt": "<s>[INST] In the fictional programming language ZeetLang, what does the keyword 'spline' do? [/INST]", "completion": "In ZeetLang, 'spline' defines a smooth interpolated function between data points.</s>"}
+{"prompt": "<s>[INST] What is the command to create a new Python virtual environment? [/INST]", "completion": "The command is 'python -m venv <env_name>'.</s>"}
+{"prompt": "<s>[INST] In ISO 8601, how is a date formatted? [/INST]", "completion": "In ISO 8601, the date format is YYYY-MM-DD.</s>"}
